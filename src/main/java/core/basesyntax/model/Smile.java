@@ -4,8 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import java.util.List;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Smile {
@@ -14,8 +13,8 @@ public class Smile {
     private Long id;
     private String value;
 
-    @OneToMany(mappedBy = "comment")
-    private List<Smile> smiles;
+    @ManyToOne
+    private Comment comment;
 
     public Smile() {
     }
