@@ -16,7 +16,7 @@ public class User {
     private Long id;
     private String username;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     @Cascade(CascadeType.PERSIST)
     private List<Comment> comments;
 

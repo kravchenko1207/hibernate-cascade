@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 
@@ -14,8 +15,11 @@ public class Comment {
     private Long id;
     private String content;
 
-    @OneToMany
+    @OneToMany(mappedBy = "comment")
     private List<Smile> smiles;
+
+    @ManyToOne
+    private User user;
 
     public Long getId() {
         return id;
