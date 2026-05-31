@@ -2,7 +2,6 @@ package core.basesyntax.dao.impl;
 
 import core.basesyntax.dao.UserDao;
 import core.basesyntax.model.User;
-import jakarta.persistence.Query;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
