@@ -38,12 +38,13 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
     @Override
     public User get(Long id) {
         try (Session session = sessionFactory.openSession()) {
-            Query query = session.createQuery(
-                    "SELECT u FROM User u LEFT JOIN FETCH u.comments WHERE u.id = :id",
-                    User.class
-            );
-            query.setParameter("id", id);
-            return session.get(User.class, id);
+            return session.createQuery(
+                            "SELECT u FROM User u "
+                                    + "LEFT JOIN FETCH u.comments "
+                                    + "WHERE u.id = :id",
+                            User.class)
+                    .setParameter("id", id)
+                    .uniqueResult();
         } catch (Exception e) {
             throw new RuntimeException("Can't find user by id " + id, e);
         }
@@ -65,8 +66,8 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
             if (session != null) {
                 session.close();
             }
-            return userList;
         }
+        return userList;
     }
 
     @Override

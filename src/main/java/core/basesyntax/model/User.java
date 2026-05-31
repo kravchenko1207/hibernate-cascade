@@ -5,6 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import java.util.List;
 
 @Entity
@@ -15,6 +18,7 @@ public class User {
     private String username;
 
     @OneToMany(mappedBy = "user")
+    @Cascade(CascadeType.PERSIST)
     private List<Comment> comments;
 
     public Long getId() {

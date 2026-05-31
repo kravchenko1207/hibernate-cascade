@@ -59,8 +59,8 @@ public class CommentDaoImpl extends AbstractDao implements CommentDao {
             if (session != null) {
                 session.close();
             }
-            return commentsList;
         }
+        return commentsList;
     }
 
     @Override
